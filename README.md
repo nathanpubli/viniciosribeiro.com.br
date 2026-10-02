@@ -6,6 +6,7 @@ Landing page da **Vinicios Ribeiro Mentoria** (Instituto Pulsa Farma). Site est�
 - `styles.css`: estilos (paleta, tipografia, layout mobile-first)
 - `main.js`: formulário de aplicação → WhatsApp, FAQ, eventos de Lead (GTM / Meta Pixel)
 - `images/`: fotos da página (veja `images/README.md`)
+- `bio/`: página "link na bio" do Instagram (viniciosribeiro.com.br/bio). Links das redes e WhatsApp ficam direto em `bio/index.html`
 
 ## Configuração
 
