@@ -1,0 +1,27 @@
+name: Deploy cPanel (Git Version Control)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Atualizar do remoto e implantar HEAD no cPanel
+        env:
+          CPANEL_TOKEN: ${{ secrets.CPANEL_TOKEN }}
+        run: |
+          set -e
+          API="https://br12.hostgator.com.br:2083/execute"
+          AUTH="Authorization: cpanel vini4641:${CPANEL_TOKEN}"
+          REPO="/home2/vini4641/repositories/viniciosribeiro.com.br"
+
+          echo "1) Atualizar do remoto (git pull no cPanel)"
+          curl -sS -H "$AUTH" --get --data-urlencode "repository_root=$REPO" --data-urlencode "branch=main" "$API/VersionControl/update" | tee update.json
+          jq -e '.status == 1' update.json > /dev/null
+
+          echo "2) Implantar HEAD (.cpanel.yml)"
+          curl -sS -H "$AUTH" --get --data-urlencode "repository_root=$REPO" "$API/VersionControlDeployment/create" | tee deploy.json
+          jq -e '.status == 1' deploy.json > /dev/null
