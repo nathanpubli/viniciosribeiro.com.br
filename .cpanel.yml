@@ -1,0 +1,6 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home2/vini4641/public_html/
+    - /bin/cp -R * $DEPLOYPATH
+    - /bin/rm -f ${DEPLOYPATH}README.md
