@@ -483,8 +483,8 @@ h1, h2, p { margin: 0; }
   color: var(--text-muted);
 }
 
-/* Floating WhatsApp */
-.wa-float {
+/* Floating Instagram */
+.ig-float {
   position: fixed;
   right: 16px;
   bottom: 16px;
@@ -492,8 +492,8 @@ h1, h2, p { margin: 0; }
   display: flex;
   align-items: center;
   gap: 8px;
-  background: #25D366;
-  color: #0B2E1A;
+  background: linear-gradient(45deg, #F9A03F, #E1306C 55%, #833AB4);
+  color: #fff;
   font-family: var(--display);
   font-weight: 700;
   font-size: 13px;
@@ -501,9 +501,9 @@ h1, h2, p { margin: 0; }
   border-radius: 999px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
 }
-.wa-float:hover { color: #0B2E1A; box-shadow: 0 10px 36px rgba(37, 211, 102, .45); }
-.wa-float .ic { font-size: 18px; stroke-width: 2; }
-.wa-float[hidden] { display: none; }
+.ig-float:hover { color: #fff; box-shadow: 0 10px 36px rgba(225, 48, 108, .45); }
+.ig-float .ic { font-size: 18px; stroke-width: 2; }
+.ig-float[hidden] { display: none; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
