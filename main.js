@@ -2,8 +2,8 @@
 
 // Site settings (the design's "Tweaks" panel).
 const CONFIG = {
-  instagramUrl: 'https://www.instagram.com/vinicios.ribeiiro/',
-  showFloatingInstagram: true,
+  whatsappNumber: '5521988792087', // +55 21 98879-2087
+  showFloatingWhatsApp: true,
   showTexture: true,
 };
 
@@ -15,6 +15,9 @@ const FAQ = [
   ['Qual é o investimento?', 'O investimento é apresentado na conversa de aplicação, depois de entendermos o momento da sua loja.'],
 ];
 
+const waNumber = String(CONFIG.whatsappNumber).replace(/\D/g, '');
+const waLink = text => `https://wa.me/${waNumber}?text=${encodeURIComponent(text)}`;
+
 // Sends a Lead event to GTM (dataLayer) and the Meta Pixel, when installed.
 function track(event, data = {}) {
   window.dataLayer = window.dataLayer || [];
@@ -24,12 +27,12 @@ function track(event, data = {}) {
 
 // Settings
 if (!CONFIG.showTexture) document.body.classList.add('no-texture');
-document.querySelector('.ig-float').hidden = !CONFIG.showFloatingInstagram;
+document.querySelector('.wa-float').hidden = !CONFIG.showFloatingWhatsApp;
 
-// Instagram buttons
-document.querySelectorAll('[data-ig]').forEach(a => {
-  a.href = CONFIG.instagramUrl;
-  a.addEventListener('click', () => track('instagram_click', { origem: 'botao' }));
+// WhatsApp buttons
+document.querySelectorAll('[data-wa]').forEach(a => {
+  a.href = waLink('Olá! Quero saber mais sobre a Vinicios Ribeiro Mentoria.');
+  a.addEventListener('click', () => track('whatsapp_click', { origem: 'botao' }));
 });
 
 // Image slots: show the placeholder until the photo file exists in images/
@@ -81,9 +84,10 @@ form.addEventListener('submit', e => {
     errorEl.textContent = 'Preencha nome, WhatsApp com DDD, lojas, faturamento e disponibilidade para investir.';
     return;
   }
-  const href = CONFIG.instagramUrl;
+  const msg = `Olá! Acabei de aplicar para a Vinicios Ribeiro Mentoria.\nNome: ${f.nome}\nCidade/UF: ${f.cidade}\nLojas: ${f.lojas}\nFaturamento: ${f.fat}\nMaior desafio: ${f.desafio}\nInvestir agora: ${investir}`;
+  const href = waLink(msg);
   track('lead_form', { lojas: f.lojas, faturamento: f.fat, investir });
-  document.getElementById('lead-ig').href = href;
+  document.getElementById('lead-wa').href = href;
   form.hidden = true;
   document.getElementById('lead-sent').hidden = false;
   window.open(href, '_blank');

@@ -4,16 +4,16 @@ Landing page da **Vinicios Ribeiro Mentoria** (Instituto Pulsa Farma). Site est�
 
 - `index.html`: as 11 seções da página e os ícones SVG
 - `styles.css`: estilos (paleta, tipografia, layout mobile-first)
-- `main.js`: formulário de aplicação → Instagram, FAQ, eventos de Lead (GTM / Meta Pixel)
+- `main.js`: formulário de aplicação → WhatsApp, FAQ, eventos de Lead (GTM / Meta Pixel)
 - `images/`: fotos da página (veja `images/README.md`)
-- `bio/`: página "link na bio" do Instagram (viniciosribeiro.com.br/bio). O link do Instagram fica direto em `bio/index.html`
+- `bio/`: página "link na bio" do Instagram (viniciosribeiro.com.br/bio). Links das redes e WhatsApp ficam direto em `bio/index.html`
 
 ## Configuração
 
 No topo de `main.js`, em `CONFIG`:
 
-- `instagramUrl`: link do perfil do Instagram
-- `showFloatingInstagram`: mostra ou esconde o botão flutuante
+- `whatsappNumber`: número com DDI e DDD, só dígitos (atual: `5521988792087`)
+- `showFloatingWhatsApp`: mostra ou esconde o botão flutuante
 - `showTexture`: liga ou desliga a textura de linhas no fundo
 
 ## Rodar localmente
